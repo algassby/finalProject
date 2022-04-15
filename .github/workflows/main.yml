@@ -1,0 +1,24 @@
+name: CI Back & Front
+on:
+push:
+branches: [main]
+pull_request:
+ branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: build compose file
+      run: cd Back && docker-compose build
+    - name: run containers
+      run: cd Back && docker-compose up -d
+    - name: test docker containers
+      run: docker ps -a
+    - name: test volume
+      run: docker exec php-app ls -al
+    - name: composer dependencies
+      run: docker exec php-app composer install
+    - name: phpunit test
+      continue-on-error: true
+      run: docker exec php-app php bin/phpunit
