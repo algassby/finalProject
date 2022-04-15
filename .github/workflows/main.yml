@@ -22,6 +22,8 @@ jobs:
        run: docker exec php-app ls -al
      - name: composer dependencies
        run: docker exec php-app composer install
+     - name: run back end test
+       run: ./executeBack.sh
      - name: phpunit test
        continue-on-error: true
        run: docker exec php-app php bin/phpunit
