@@ -24,6 +24,7 @@ jobs:
        run: docker exec php-app composer install
      - name: run back end test
        run: ./executeBack.sh
-     - name: phpunit test
-       continue-on-error: true
-       run: docker exec php-app php bin/phpunit
+       timeout-minutes: 30
+     #- name: phpunit test
+       #continue-on-error: true
+       #run: docker exec php-app php bin/phpunit
