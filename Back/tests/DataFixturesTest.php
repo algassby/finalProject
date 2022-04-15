@@ -16,12 +16,12 @@ class DataFixturesTest extends KernelTestCase
 
     public function testFixutresV2()
     {
-        $appFixtures = self::getContainer()->get(AppFixtures::class);
-        $objectManager = self::getContainer()->get(EntityManagerInterface::class);
-        $appFixtures->load($objectManager);
-        // faire attention les data change à chaque test ( peut être mettre des valeur fixe dans les fixtures )
-        // tester si les fixtures sont bien load
-        // faire le mock pour éviter l'appel à chaques fois
-        $this->assertTrue(true);
+        // $appFixtures = self::getContainer()->get(AppFixtures::class);
+        // $objectManager = self::getContainer()->get(EntityManagerInterface::class);
+        // $appFixtures->load($objectManager);
+        // // faire attention les data change à chaque test ( peut être mettre des valeur fixe dans les fixtures )
+        // // tester si les fixtures sont bien load
+        // // faire le mock pour éviter l'appel à chaques fois
+        // $this->assertTrue(true);
     }
 }
