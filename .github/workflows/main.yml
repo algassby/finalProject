@@ -22,9 +22,9 @@ jobs:
        run: docker exec php-app ls -al
      - name: composer dependencies
        run: docker exec php-app composer install
-         php bin/console doctrine:database:drop --force --env=test
-         php bin/console doctrine:database:create --env=test
-         php bin/console doctrine:migrations:migrate -n --env=test
+         && php bin/console doctrine:database:drop --force --env=test
+         && php bin/console doctrine:database:create --env=test
+         && php bin/console doctrine:migrations:migrate -n --env=test
      - name: phpunit test
        continue-on-error: true
        run: docker exec php-app php bin/phpunit
