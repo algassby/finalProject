@@ -61,7 +61,6 @@ class ApiTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertJson($response->getContent());
         $responseData = json_decode($response->getContent(), true);
-        print_r($responseData);
         $this->assertNotNull($responseData);
     }
 
@@ -104,12 +103,10 @@ class ApiTest extends WebTestCase
              ['quantity' => 1000]
          );
          $response = $client->getResponse();
-     
          $this->assertResponseIsSuccessful();
          $this->assertJson($response->getContent());
          $responseData = json_decode($response->getContent(), true);
          $this->assertEquals(["error" => "too many"], $responseData);
-         print_r($responseData);
     
       }
 
@@ -126,7 +123,6 @@ class ApiTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertJson($response->getContent());
         $responseData = json_decode($response->getContent());
-        print_r($responseData);
         $this->assertEquals($id, $responseData->products[0]->id);
         $this->assertEquals(1, count($responseData->products));
 
@@ -141,7 +137,6 @@ class ApiTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertJson($response->getContent());
         $responseData = json_decode($response->getContent(), true);
-        print_r($responseData);
         $this->assertNotEmpty($responseData);
         $this->assertNotNull($responseData);
     }
@@ -156,7 +151,6 @@ class ApiTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertJson($response->getContent());
         $responseData = json_decode($response->getContent());
-        print_r($responseData);
         $this->assertEquals(0, count($responseData->products));
       
     }
@@ -172,10 +166,5 @@ class ApiTest extends WebTestCase
         $responseData = json_decode($response->getContent(), true);
         $this->assertEquals(['delete' => "ok"], $responseData);
     }
-
-  
-    
-    
-
 
 }
