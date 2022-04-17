@@ -23,7 +23,7 @@ jobs:
      - name: composer dependencies
        run: docker exec php-app composer install
      - name: run back end test
-       run: ls -la | grep 'executeBack' && chmod +x ./executeBack.sh && ./executeBack.sh
+       run:  chmod +x executeBack.sh && ls -la | grep 'executeBack' && && bash executeBack.sh
        timeout-minutes: 30
      #- name: phpunit test
        #continue-on-error: true
