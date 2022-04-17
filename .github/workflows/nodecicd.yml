@@ -11,4 +11,4 @@ jobs:
         run: cd Front && npm install
 
       - name: Test
-        run: npm test
+        run: cd Front && npm test
