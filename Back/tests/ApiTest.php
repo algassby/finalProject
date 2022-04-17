@@ -141,7 +141,6 @@ class ApiTest extends WebTestCase
         $this->assertNotNull($responseData);
     }
 
-
     public function testDeleteProductToCart(): void {
         $client = static::createClient();
         $id = $this->getProducts($client)['id'];
