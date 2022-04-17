@@ -31,7 +31,19 @@ const server = setupServer(
                             image: 'https://rickandmortyapi.com/api/character/avatar/15.jpeg'
                         }
                 ]}))}),
-    // remove
+                rest.delete(
+                    "http://localhost:8000/api/cart/3",
+                    (req, res, ctx) => {
+                        return res(
+                            ctx.json({
+                                products: [{
+                                    id: 3,
+                                    name: 'Summer Smith',
+                                    price: '15',
+                                    quantity: 5,
+                                    image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg'
+                                }
+                            ]}))})
     );
 
 beforeAll(() => server.listen());
@@ -56,7 +68,6 @@ afterAll(() => server.close());
             await loadCart()
         });
         const { products } = result.current;
-        console.log(products[0]);
         await act(async () => {
             await removeToCart(products[0])
         });
