@@ -2,7 +2,7 @@ import {rest} from "msw";
 import {setupServer} from "msw/node";
 import { renderHook, act } from '@testing-library/react-hooks'
 import useCart from "../../hooks/useCart";
-
+jest.setTimeout(30000);
 const server = setupServer(
     rest.get(
         "http://localhost:8000/api/cart",
@@ -46,6 +46,20 @@ afterAll(() => server.close());
             await loadCart()
         });
         const {products} = result.current;
-        console.log(products);
     })
 
+    test("remove cart", async () => {
+        const { result } = renderHook(() => useCart());
+        const { loading, loadCart, removeToCart } = result.current;
+        expect(loading).toEqual(true);
+        await act(async () => {
+            await loadCart()
+        });
+        const { products } = result.current;
+        console.log(products[0]);
+        await act(async () => {
+            await removeToCart(products[0])
+        });
+        const { message } = result.current;
+        expect(message).toBe("Produit bien supprimé")
+    })

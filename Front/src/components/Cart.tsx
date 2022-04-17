@@ -6,12 +6,12 @@ const Cart = ({ setRoute }: { setRoute: (data: any) => void }) => {
   return (
     <div>
       {loading && <div>Loading....</div>}
-      {message && <p>{message}</p>}
+      {message && <p className="message">{message}</p>}
       <div onClick={() => setRoute({ route: "home" })}>Retour</div>
       <div>
-        {products.map((product) => {
+        {products.map((product, n) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={n}>
               <div>
                 <img src={product.image} alt="" />
                 <p>Figurine de {product.name}</p>
